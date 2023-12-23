@@ -1,0 +1,54 @@
+### Pre-requisite: 
+
+### show all content
+GET http://localhost:8080/api/v1/content
+Content-Type: application/json
+
+### show content by selecting id
+GET http://localhost:8080/api/v1/content/1
+Content-Type: application/json
+
+
+### Add content 
+### Pls Change date to present or future
+POST http://localhost:8080/api/v1/content
+Content-Type: application/json
+
+{
+  "id": 2,
+  "title": "Blog Post on My Exercise Journey",
+  "description": "Describe My Exercsie Routine",
+  "status": "IDEA",
+  "contentType": "VIDEO",
+  "contentCreated": "2023-12-23T04:34:45.8050445",
+  "contentUpdated": null,
+  "url": "https://myblog.com",
+  "tags": [
+    "weight loss",
+    "exercise"
+  ]
+}
+
+### Update content 
+### Pls Change date to present or future
+PUT http://localhost:8080/api/v1/content/2
+Content-Type: application/json
+
+{
+  "id": 2,
+  "title": "Shedding Off the extra kilos",
+  "description": "You've Got to Move it Move It",
+  "status": "IDEA",
+  "contentType": "ARTICLE",
+  "contentCreated": "2023-12-23T04:34:45.8050445",
+  "contentUpdated": "2023-12-23T04:34:45.8050445",
+  "url": "https://myblog.com",
+  "tags": [
+    "weight loss",
+    "exercise"
+  ]
+}
+
+### Delete customer 
+Delete http://localhost:8080/api/v1/content/2
+Content-Type: application/json
