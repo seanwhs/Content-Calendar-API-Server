@@ -16,12 +16,12 @@ POST http://localhost:8080/api/v1/content
 Content-Type: application/json
 
 {
-  "id": 2,
+  "id": null,
   "title": "Blog Post on My Exercise Journey",
   "description": "Describe My Exercsie Routine",
   "status": "IDEA",
   "contentType": "VIDEO",
-  "contentCreated": "2023-12-23T04:34:45.8050445",
+  "contentCreated": "2027-12-27T04:34:45.8050445",
   "contentUpdated": null,
   "url": "https://myblog.com",
   "tags": [
@@ -32,17 +32,17 @@ Content-Type: application/json
 
 ### Update content 
 ### Pls Change date to present or future
-PUT http://localhost:8080/api/v1/content/2
+PUT http://localhost:8080/api/v1/content/6
 Content-Type: application/json
 
 {
-  "id": 2,
+  "id": 6,
   "title": "Shedding Off the extra kilos",
   "description": "You've Got to Move it Move It",
   "status": "IDEA",
   "contentType": "ARTICLE",
-  "contentCreated": "2023-12-23T04:34:45.8050445",
-  "contentUpdated": "2023-12-23T04:34:45.8050445",
+  "contentCreated": "2028-12-23T04:34:45.8050445",
+  "contentUpdated": "2028-12-23T04:34:45.8050445",
   "url": "https://myblog.com",
   "tags": [
     "weight loss",
@@ -50,6 +50,6 @@ Content-Type: application/json
   ]
 }
 
-### Delete customer 
-Delete http://localhost:8080/api/v1/content/2
+### Delete content 
+Delete http://localhost:8080/api/v1/content/6
 Content-Type: application/json

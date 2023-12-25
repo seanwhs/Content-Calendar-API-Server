@@ -48,14 +48,27 @@ public class ContentController {
         repository.save(content);
     }
 
+    // @ResponseStatus(HttpStatus.ACCEPTED)
+    // @PutMapping("{id}")
+    // public void update(@Valid @RequestBody Content content, @PathVariable Integer id) {
+    //     if(!repository.existsById(id)) {
+    //         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Content not found.");
+    //     }
+    //     repository.save(content);
+    // }
+
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PutMapping("{id}")
     public void update(@Valid @RequestBody Content content, @PathVariable Integer id) {
-        if(!repository.existsById(id)) {
+        if (!repository.existsById(id)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Content not found.");
         }
+        // Set the ID of the content to match the path variable ID
+        content = new Content(id, content.title(), content.description(), content.status(), content.contentType(),
+                content.contentCreated(), content.contentUpdated(), content.url(), content.tags());
         repository.save(content);
     }
+
     
     @ResponseStatus(HttpStatus.ACCEPTED)
     @DeleteMapping("{id}")
