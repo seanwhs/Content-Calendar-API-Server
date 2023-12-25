@@ -16,15 +16,17 @@ import org.springframework.web.server.ResponseStatusException;
 
 import jakarta.validation.Valid;
 import sean.contentcalendarapi.model.Content;
-import sean.contentcalendarapi.repository.ContentCollectionRepository;
+import sean.contentcalendarapi.model.Status;
+import sean.contentcalendarapi.model.Type;
+import sean.contentcalendarapi.repository.ContentRepository;
 
 @RestController
 @CrossOrigin
 @RequestMapping("api/v1/content")
 public class ContentController {
-    private final ContentCollectionRepository repository;
+    private final ContentRepository repository;
 
-    public ContentController(ContentCollectionRepository repository) {
+    public ContentController(ContentRepository repository) {
         this.repository = repository;
     }
     
@@ -49,7 +51,7 @@ public class ContentController {
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PutMapping("{id}")
     public void update(@Valid @RequestBody Content content, @PathVariable Integer id) {
-        if(!repository.existById(id)) {
+        if(!repository.existsById(id)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Content not found.");
         }
         repository.save(content);
@@ -58,7 +60,22 @@ public class ContentController {
     @ResponseStatus(HttpStatus.ACCEPTED)
     @DeleteMapping("{id}")
     public void delete(@PathVariable Integer id){
-        repository.delete(id);
+        repository.deleteById(id);
+    }
+
+    @GetMapping("/filter/{keyword}")
+    public List<Content> findByTitle(@PathVariable String keyword){
+        return repository.findByTitleContaining(keyword);
+    }
+
+    @GetMapping("/filter/status/{status}")
+    public List <Content>findByStatusList(@PathVariable Status status){
+        return repository.findByStatus(status);
+    }
+
+    @GetMapping("/filter/type/{type}")
+    public List <Content>findByType(@PathVariable Type type){
+        return repository.findByType(type);
     }
 }
 
