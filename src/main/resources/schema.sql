@@ -1,7 +1,8 @@
 -- schema.sql
 
 CREATE TABLE IF NOT EXISTS content (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    -- id INT AUTO_INCREMENT PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     description TEXT,
     status VARCHAR(50) NOT NULL,
